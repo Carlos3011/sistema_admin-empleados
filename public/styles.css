@@ -1,0 +1,49 @@
+body {
+    overflow-x: hidden;
+}
+
+/* styles.css */
+#sidebar-wrapper {
+    transition: margin 0.3s ease;
+}
+
+#sidebar-wrapper.hidden {
+    margin-left: -230px; /* Ajusta este valor según el ancho de tu sidebar */
+}
+
+#content-wrapper {
+    transition: margin 0.3s ease;
+    padding: 20px;
+    max-width: 1200px;  /* limita el ancho máximo del contenido */
+    margin: 0 auto;     /* centra el contenido horizontalmente */
+    min-height: 100vh;  /* hace que ocupe al menos toda la altura de la ventana */
+}
+
+#content-wrapper.expanded {
+    margin-left: 0;
+    padding: 20px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        display: none;
+    }
+
+    #sidebar-wrapper.show {
+        display: block;
+        position: absolute;
+        z-index: 1000;
+        background: #343a40;
+        width: 250px;
+        height: 100vh;
+    }
+}
+
+#menu-toggle {
+    border: none;
+    background: none;
+}
