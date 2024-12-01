@@ -19,6 +19,9 @@ class AuthController {
             // Generar token único para validar en el servidor Python
             $token = bin2hex(random_bytes(16));
             $_SESSION['auth_token'] = $token;
+
+            // Guardar el token en la base de datos
+            $this->model->guardarToken($empleado['id_empleado'], $token);
     
             return [
                 'success' => true,
@@ -33,5 +36,4 @@ class AuthController {
             'message' => 'Correo o contraseña incorrectos'
         ];
     }
-    
 }

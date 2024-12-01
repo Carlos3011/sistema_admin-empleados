@@ -46,12 +46,7 @@
         ?>
         <div class="d-flex" id="wrapper">
             <?php 
-            // Incluir el sidebar según el rol del usuario
-            if ($_SESSION['id_rol'] == 1) {
                 include '../views/sidebar.php'; // Sidebar para administrador
-            } elseif($_SESSION['id_rol'] == 2) {
-                include '../views/modules/empleados/sidebar.php'; // Sidebar para empleado // Sidebar para roles no reconocidos
-            }
             ?>
 
             <!-- Contenido dinámico -->
@@ -79,22 +74,7 @@
                             include '../views/modules/tablero.php'; // Página predeterminada
                             break;
                     }
-                } elseif ($_SESSION['id_rol'] == 2) {
-                    // Rutas del empleado
-                    switch ($page) {
-                        case 'asistencia':
-                            include '../views/modules/empleados/asistencia.php';
-                            break;
-                        case 'permisos':
-                            include '../views/modules/empleados/permisos.php';
-                            break;
-                        default:
-                            include '../views/modules/empleados/asistencia.php'; // Página predeterminada
-                            break;
-                    }
-                }else {
-                    include '../views/modules/404.php'; // Página de error
-                }
+                } 
                 ?>
             </div>
         </div>

@@ -42,8 +42,8 @@ document.getElementById("login-form").addEventListener("submit", async function(
                 if (result.role == 1) {
                     // Administrador
                     window.location.href = 'index.php?page=tablero';
-                } else {
-                    // Empleado, redirigir al servidor Python
+                } else if (result.role == 2) {
+                    // Redirigir al servidor Python para empleados
                     window.location.href = `http://localhost:5000/asistencia?token=${result.auth_token}`;
                 }
             });
