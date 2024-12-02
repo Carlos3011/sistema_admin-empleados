@@ -11,6 +11,13 @@ class AuthController {
     public function login($correo, $password) {
         $empleado = $this->model->verificarUsuario($correo, $password);
     
+        if (isset($empleado['error'])) {
+            return [
+                'success' => false,
+                'message' => $empleado['error']
+            ];
+        }
+    
         if ($empleado) {
             session_start();
             $_SESSION['id_empleado'] = $empleado['id_empleado'];
@@ -19,7 +26,7 @@ class AuthController {
             // Generar token único para validar en el servidor Python
             $token = bin2hex(random_bytes(16));
             $_SESSION['auth_token'] = $token;
-
+    
             // Guardar el token en la base de datos
             $this->model->guardarToken($empleado['id_empleado'], $token);
     
@@ -36,4 +43,5 @@ class AuthController {
             'message' => 'Correo o contraseña incorrectos'
         ];
     }
+    
 }

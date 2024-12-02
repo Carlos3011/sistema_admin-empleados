@@ -11,13 +11,20 @@ class AuthModel {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['correo' => $correo]);
         $empleado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($empleado && $password === $empleado['password']) {
-            return $empleado;
+    
+        if ($empleado) {
+            if ($password === $empleado['password']) {
+                if ($empleado['activo'] == 1) {
+                    return $empleado; // El usuario es válido y está activo
+                } else {
+                    return ['error' => 'Usuario inactivo']; // Usuario inactivo
+                }
+            }
         }
-
-        return false;
+    
+        return false; // Credenciales incorrectas
     }
+    
 
     public function guardarToken($id_empleado, $token) {
         $query = "INSERT INTO sesiones (id_empleado, auth_token) VALUES (:id_empleado, :auth_token)
