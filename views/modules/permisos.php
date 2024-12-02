@@ -119,4 +119,4 @@
     </div>
 </div>
 
-<script src="../ajax/datatable-permisos.js"></script>
+<script src="../ajax/ajax-permisos.js"></script>
