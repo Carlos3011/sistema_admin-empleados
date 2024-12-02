@@ -37,6 +37,7 @@ class PermisoModel {
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function getPermisoById($id) {
         $query = "SELECT 
                     permisos.id_permiso, 
@@ -51,7 +52,6 @@ class PermisoModel {
         $stmt->execute(['id_permiso' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
 
     public function getEmpleados() {
         $query = "SELECT id_empleado, nombre, apellido FROM empleados WHERE activo = 1";
@@ -70,7 +70,8 @@ class PermisoModel {
         $query = "UPDATE permisos SET 
                   tipo_permiso = :tipo_permiso, 
                   fecha_inicio = :fecha_inicio, 
-                  fecha_fin = :fecha_fin 
+                  fecha_fin = :fecha_fin,
+                  estado = :estado 
                   WHERE id_permiso = :id_permiso";
         $stmt = $this->pdo->prepare($query);
         $data['id_permiso'] = $id;
@@ -88,5 +89,5 @@ class PermisoModel {
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute(['id_permiso' => $id]);
     }
-    
 }
+?>

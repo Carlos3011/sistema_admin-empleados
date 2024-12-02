@@ -39,7 +39,8 @@ try {
             $data = [
                 'tipo_permiso' => $_POST['tipo_permiso'],
                 'fecha_inicio' => $_POST['fecha_inicio'],
-                'fecha_fin' => $_POST['fecha_fin']
+                'fecha_fin' => $_POST['fecha_fin'],
+                'estado' => $_POST['estado']
             ];
             $controller->editarPermiso($id, $data);
             break;
@@ -49,20 +50,18 @@ try {
             $estado = $_POST['estado'];
             $controller->cambiarEstadoPermiso($id, $estado);
             break;
+
         case 'obtener':
             if (!empty($_GET['id_permiso'])) {
                 $id = $_GET['id_permiso'];
-                $controller->obtenerPermiso($id); // Llama al método público en lugar de acceder directamente
+                $controller->obtenerPermiso($id);
             } else {
                 echo json_encode(['error' => 'ID de permiso no proporcionado']);
             }
             break;
-            
+
         case 'eliminar':
-            // Decodificar JSON desde el cuerpo de la solicitud
             $input = json_decode(file_get_contents('php://input'), true);
-        
-            // Verificar si se recibió el id_permiso
             if (isset($input['id_permiso'])) {
                 $id = $input['id_permiso'];
                 $controller->eliminarPermiso($id);
@@ -70,7 +69,7 @@ try {
                 echo json_encode(['error' => 'ID de permiso no proporcionado']);
             }
             break;
-            
+
         default:
             echo json_encode(['error' => 'Acción no válida']);
             break;
@@ -78,3 +77,4 @@ try {
 } catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
+?>

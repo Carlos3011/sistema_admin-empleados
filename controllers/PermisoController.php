@@ -17,11 +17,12 @@ class PermisoController {
         $empleados = $this->model->getEmpleados();
         echo json_encode(['empleados' => $empleados]);
     }
+
     public function obtenerPermiso($id) {
         $permiso = $this->model->getPermisoById($id);
         echo json_encode($permiso);
     }
-    
+
     public function agregarPermiso($data) {
         $result = $this->model->addPermiso($data);
         echo json_encode(['success' => $result]);
@@ -45,5 +46,5 @@ class PermisoController {
             echo json_encode(['success' => false, 'error' => 'Error al eliminar el permiso.']);
         }
     }
-    
 }
+?>
