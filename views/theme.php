@@ -49,7 +49,7 @@
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-dark text-white" id="sidebar-wrapper">
+        <div class="bg-black text-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold border-bottom">
                 <i class="fas fa-tools me-2"></i>SCA
             </div>
@@ -99,7 +99,7 @@
         <!-- /#page-content-wrapper -->
 
         <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-3 w-100">
+        <footer class="bg-black text-white text-center py-3 w-100">
             <div class="container">
                 <p class="mb-0">© 2023 Tu Empresa. Todos los derechos reservados.</p>
             </div>

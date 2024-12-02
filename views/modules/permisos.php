@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-black border-bottom">
     <div class="container-fluid">
         <h3 class="ms-3 text-white">Gestor de Permisos</h3>
     </div>
